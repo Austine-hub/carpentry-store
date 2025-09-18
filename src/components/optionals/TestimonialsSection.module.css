@@ -1,0 +1,347 @@
+/* TestimonialsSection.module.css */
+
+/* Global and Shared Variables */
+:root {
+  /* Colors */
+  --color-primary: #3b82f6; /* Blue */
+  --color-text-dark: #111827; /* Dark Grey */
+  --color-text-mid: #4b5563; /* Grey */
+  --color-text-light: #6b7280; /* Lighter Grey */
+  --color-text-lighter: #9ca3af; /* Even Lighter Grey */
+  --color-border-light: #e5e7eb; /* Light Border Grey */
+  --color-bg-light: #f9fafb; /* Off-white */
+  --color-white: #ffffff;
+  --color-black: #000000;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+}
+
+/* Section Container */
+.testimonialsSection {
+  background-color: var(--color-bg-light);
+  padding: 4rem 1.5rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header Section */
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text-dark);
+}
+
+.description {
+  color: var(--color-text-light);
+  margin-top: 0.5rem;
+  max-width: 42rem;
+  line-height: 1.6;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Testimonial Card */
+.testimonialContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.testimonialCard {
+  background: var(--color-white);
+  border: 1px solid var(--color-border-light);
+  border-radius: 0.5rem;
+  padding: 2.5rem 2rem;
+  max-width: 48rem;
+  width: 100%;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.testimonialCard:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.quoteSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.quoteIcon {
+  color: var(--color-text-lighter);
+}
+
+.quote {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: var(--color-text-mid);
+  font-style: italic;
+  margin: 0;
+}
+
+.clientInfo {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.avatar {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+.clientDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+.clientName {
+  font-weight: 600;
+  color: var(--color-text-dark);
+}
+
+.clientSubtitle {
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+}
+
+.projectInfo {
+  font-size: 0.75rem;
+  color: var(--color-text-light);
+  margin-top: 0.25rem;
+}
+
+/* Navigation Controls */
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.navButton {
+  background: var(--color-white);
+  border: 1px solid var(--color-border-light);
+  border-radius: 50%;
+  padding: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.navButton:hover {
+  background-color: var(--color-bg-light);
+  transform: scale(1.05);
+  box-shadow: var(--shadow-sm);
+}
+
+.navButton:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.navIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--color-text-dark);
+}
+
+.indicators {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.indicator {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  border: none;
+  background: var(--color-border-light);
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.indicator:hover {
+  background: var(--color-text-lighter);
+}
+
+.indicator.active {
+  background: var(--color-text-dark);
+  transform: scale(1.2);
+}
+
+.indicator:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Featured Projects Section */
+.featuredProjects {
+  margin-top: 5rem;
+  text-align: center;
+}
+
+.projectsTitle {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-text-mid);
+  margin-bottom: 1.5rem;
+}
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+/* Responsive grid */
+@media (min-width: 640px) {
+  .testimonialCard {
+    padding: 2.5rem;
+  }
+  .projectsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .projectsGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.projectCard {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  background-color: var(--color-white);
+  text-align: left;
+}
+
+.projectCard:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.projectImage {
+  width: 100%;
+  height: 12rem;
+  object-fit: cover;
+}
+
+.projectInfo {
+  padding: 1rem;
+}
+
+.projectCardTitle {
+  font-weight: 600;
+  color: var(--color-text-dark);
+  font-size: 0.875rem;
+}
+
+.projectCardSubtitle {
+  font-size: 0.75rem;
+  color: var(--color-text-light);
+  margin-top: 0.25rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .testimonialsSection {
+    background-color: #1a1a1a;
+  }
+  .testimonialCard, .projectCard {
+    background-color: #2c2c2c;
+    border-color: #3b3b3b;
+    box-shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.05), 0 2px 4px -1px rgba(255, 255, 255, 0.03);
+  }
+  .title, .clientName, .projectCardTitle {
+    color: var(--color-white);
+  }
+  .description, .quote, .clientSubtitle, .projectInfo, .projectCardSubtitle {
+    color: #bdbdbd;
+  }
+  .navButton {
+    background-color: #2c2c2c;
+    border-color: #3b3b3b;
+    color: #bdbdbd;
+  }
+  .navButton:hover {
+    background-color: #3b3b3b;
+    border-color: #4b4b4b;
+  }
+  .navIcon {
+    color: var(--color-white);
+  }
+  .indicator {
+    background: #3b3b3b;
+  }
+  .indicator.active {
+    background: #bdbdbd;
+  }
+  .indicator:hover {
+    background: #6b6b6b;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .testimonialCard, .navButton, .projectCard, .indicator {
+    animation: none;
+    transition: none;
+  }
+  .navButton:hover, .projectCard:hover, .indicator.active, .indicator:hover {
+    transform: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  .testimonialsSection {
+    background-color: transparent;
+    border-top: none;
+  }
+  .testimonialCard, .projectCard {
+    box-shadow: none;
+    border: 1px solid var(--color-black);
+  }
+  .quoteIcon, .controls, .featuredProjects {
+    display: none;
+  }
+}

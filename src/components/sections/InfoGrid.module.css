@@ -1,0 +1,211 @@
+/* InfoGrid.module.css */
+
+.container {
+  --grid-gap: clamp(1rem, 3vw, 1.5rem);
+  --card-padding: clamp(1rem, 4vw, 1.5rem);
+  --border-radius: 0.5rem;
+  --transition-duration: 200ms;
+  
+  container-type: inline-size;
+  padding-block: clamp(3rem, 8vw, 4rem);
+  padding-inline: clamp(1rem, 4vw, 1.5rem);
+  max-width: 1200px;
+  margin-inline: auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: var(--grid-gap);
+  
+  /* Enhanced accessibility */
+  @media (prefers-reduced-motion: no-preference) {
+    transition: gap var(--transition-duration) ease;
+  }
+}
+
+/* Container queries for responsive behavior */
+@container (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.75rem, 2vw, 1rem);
+  padding: var(--card-padding);
+  background-color: hsl(0 0% 100%);
+  border: 1px solid hsl(220 13% 91%);
+  border-radius: var(--border-radius);
+  
+  /* Modern shadow with better performance */
+  box-shadow: 
+    0 1px 2px 0 hsl(0 0% 0% / 0.05),
+    0 1px 3px 0 hsl(0 0% 0% / 0.1);
+  
+  /* Improved interaction states */
+  transition: 
+    transform var(--transition-duration) cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow var(--transition-duration) cubic-bezier(0.4, 0, 0.2, 1),
+    border-color var(--transition-duration) ease;
+  
+  /* Accessibility */
+  position: relative;
+  overflow: hidden;
+  will-change: transform;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 4px 6px -1px hsl(0 0% 0% / 0.1),
+    0 2px 4px -1px hsl(0 0% 0% / 0.06);
+  border-color: hsl(220 13% 80%);
+}
+
+.card:focus-within {
+  outline: 2px solid hsl(262 83% 58%);
+  outline-offset: 2px;
+  border-color: hsl(262 83% 58%);
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .card {
+    border-color: hsl(0 0% 0%);
+    border-width: 2px;
+  }
+  
+  .card:hover {
+    border-color: hsl(0 0% 0%);
+    background-color: hsl(0 0% 95%);
+  }
+}
+
+.title {
+  font-size: clamp(1rem, 2.5vw, 1.125rem);
+  font-weight: 600;
+  line-height: 1.4;
+  color: hsl(220 9% 9%);
+  margin: 0;
+  
+  /* Typography optimization */
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+.description {
+  font-size: clamp(0.875rem, 2vw, 0.875rem);
+  line-height: 1.6;
+  color: hsl(220 9% 46%);
+  margin: 0;
+  flex-grow: 1;
+  
+  /* Better text rendering */
+  text-wrap: balance;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+  color: hsl(220 9% 9%);
+  text-decoration: none;
+  font-weight: 500;
+  margin-top: auto;
+  
+  /* Enhanced interaction */
+  position: relative;
+  transition: color var(--transition-duration) ease;
+  
+  /* Underline effect */
+  background-image: linear-gradient(
+    to right,
+    currentColor 0%,
+    currentColor 100%
+  );
+  background-size: 0 1px;
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  transition: background-size var(--transition-duration) ease;
+}
+
+.link::after {
+  content: "→";
+  font-size: 0.75rem;
+  opacity: 0.7;
+  transform: translateX(0);
+  transition: 
+    transform var(--transition-duration) cubic-bezier(0.4, 0, 0.2, 1),
+    opacity var(--transition-duration) ease;
+}
+
+.link:hover {
+  color: hsl(262 83% 58%);
+  background-size: 100% 1px;
+}
+
+.link:hover::after {
+  transform: translateX(2px);
+  opacity: 1;
+}
+
+.link:focus-visible {
+  outline: 2px solid hsl(262 83% 58%);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .link,
+  .link::after {
+    transition: none;
+  }
+  
+  .card:hover {
+    transform: none;
+  }
+  
+  .link:hover::after {
+    transform: none;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .card {
+    background-color: hsl(220 13% 9%);
+    border-color: hsl(220 13% 20%);
+    box-shadow: 
+      0 1px 2px 0 hsl(0 0% 0% / 0.3),
+      0 1px 3px 0 hsl(0 0% 0% / 0.4);
+  }
+  
+  .card:hover {
+    border-color: hsl(220 13% 30%);
+    box-shadow: 
+      0 4px 6px -1px hsl(0 0% 0% / 0.4),
+      0 2px 4px -1px hsl(0 0% 0% / 0.3);
+  }
+  
+  .title {
+    color: hsl(220 9% 95%);
+  }
+  
+  .description {
+    color: hsl(220 9% 70%);
+  }
+  
+  .link {
+    color: hsl(220 9% 95%);
+  }
+  
+  .link:hover {
+    color: hsl(262 83% 70%);
+  }
+}

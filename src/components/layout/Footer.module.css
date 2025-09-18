@@ -1,0 +1,166 @@
+/* src/components/Footer.module.css */
+
+:root {
+  /* Colors */
+  --color-primary: #3b82f6; /* Blue */
+  --color-text-dark: #111827; /* Dark Grey */
+  --color-text-light: #6b7280; /* Grey */
+  --color-border-light: #e5e7eb; /* Light Grey */
+  --color-bg-light: #f9fafb; /* Off-white */
+  --color-white: #ffffff;
+}
+
+/* Main footer container */
+.footer {
+  background-color: var(--color-white);
+  border-top: 1px solid var(--color-border-light);
+  padding: 3rem 0;
+}
+
+/* Container wrapper */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Grid layout - Mobile First */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Brand section */
+.brandSection {
+  /* No specific styles needed - inherits grid positioning */
+}
+
+.brandTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  margin: 0 0 0.5rem 0;
+}
+
+.address {
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+  font-style: normal;
+  line-height: 1.5;
+}
+
+.email {
+  margin-top: 0.25rem;
+}
+
+/* Navigation sections */
+.navigationSection {
+  /* No specific styles needed - inherits grid positioning */
+}
+
+.sectionTitle {
+  font-weight: 500;
+  color: var(--color-text-dark);
+  margin: 0 0 0.75rem 0;
+  font-size: 1rem;
+}
+
+.linkList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Footer links */
+.footerLink {
+  color: var(--color-text-light);
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: color 200ms ease-in-out;
+  display: inline-block;
+}
+
+.footerLink:hover {
+  color: var(--color-text-dark);
+}
+
+.footerLink:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Copyright section */
+.copyright {
+  margin-top: 3rem;
+  border-top: 1px solid var(--color-border-light);
+  padding-top: 1.5rem;
+  text-align: center;
+}
+
+.copyright p {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  margin: 0;
+}
+
+/* Screen reader only text */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .footerLink {
+    color: #374151;
+  }
+  
+  .footerLink:hover {
+    color: #000000;
+    text-decoration: underline;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .footerLink {
+    transition: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  .footer {
+    border-top: 2px solid #000;
+    background: white !important;
+    color: black !important;
+  }
+  
+  .footerLink {
+    color: black !important;
+    text-decoration: underline;
+  }
+  
+  .footerLink:after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+  }
+}

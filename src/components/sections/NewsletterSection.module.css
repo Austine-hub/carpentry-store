@@ -1,0 +1,254 @@
+/* NewsletterSection.module.css */
+
+.newsletter {
+  --newsletter-padding: 3rem 1.5rem;
+  --newsletter-bg: #f9fafb;
+  --newsletter-border: #e5e7eb;
+  --newsletter-text-primary: #111827;
+  --newsletter-text-secondary: #6b7280;
+  --newsletter-button-bg: #111827;
+  --newsletter-button-text: #ffffff;
+  --newsletter-button-hover: #1f2937;
+  --newsletter-error: #dc2626;
+  --newsletter-radius: 0.5rem;
+  --newsletter-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --newsletter-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+  padding: var(--newsletter-padding);
+}
+
+.container {
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+.content {
+  background-color: var(--newsletter-bg);
+  border: 1px solid var(--newsletter-border);
+  border-radius: var(--newsletter-radius);
+  box-shadow: var(--newsletter-shadow);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.textContent {
+  text-align: center;
+  max-width: 32rem;
+}
+
+.title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--newsletter-text-primary);
+  margin: 0 0 0.5rem 0;
+  line-height: 1.5;
+}
+
+.description {
+  font-size: 0.875rem;
+  color: var(--newsletter-text-secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.form {
+  width: 100%;
+  max-width: 24rem;
+}
+
+.inputGroup {
+  display: flex;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--newsletter-border);
+  border-radius: var(--newsletter-radius);
+  font-size: 0.875rem;
+  color: var(--newsletter-text-primary);
+  background-color: #ffffff;
+  transition: var(--newsletter-transition);
+  outline: none;
+}
+
+.input:focus {
+  border-color: var(--newsletter-button-bg);
+  box-shadow: 0 0 0 3px rgb(17 24 39 / 0.1);
+}
+
+.input:disabled {
+  background-color: #f9fafb;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.inputError {
+  border-color: var(--newsletter-error);
+}
+
+.inputError:focus {
+  border-color: var(--newsletter-error);
+  box-shadow: 0 0 0 3px rgb(220 38 38 / 0.1);
+}
+
+.button {
+  padding: 0.75rem 1.5rem;
+  background-color: var(--newsletter-button-bg);
+  color: var(--newsletter-button-text);
+  border: none;
+  border-radius: var(--newsletter-radius);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--newsletter-transition);
+  white-space: nowrap;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+}
+
+.button:hover:not(:disabled) {
+  background-color: var(--newsletter-button-hover);
+  transform: translateY(-1px);
+}
+
+.button:focus {
+  box-shadow: 0 0 0 3px rgb(17 24 39 / 0.2);
+}
+
+.button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.button:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.error {
+  color: var(--newsletter-error);
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.error::before {
+  content: "⚠";
+  font-size: 1rem;
+}
+
+.status {
+  color: var(--newsletter-text-secondary);
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  text-align: center;
+  font-style: italic;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .newsletter {
+    --newsletter-padding: 3rem 1.5rem;
+  }
+  
+  .content {
+    flex-direction: row;
+    text-align: left;
+  }
+  
+  .textContent {
+    text-align: left;
+    max-width: none;
+    flex: 1;
+  }
+  
+  .form {
+    width: auto;
+    min-width: 20rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .form {
+    min-width: 24rem;
+  }
+  
+  .inputGroup {
+    gap: 0.75rem;
+  }
+  
+  .input {
+    padding: 0.875rem 1.25rem;
+  }
+  
+  .button {
+    padding: 0.875rem 2rem;
+  }
+}
+
+/* Animation for form submission */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.button:disabled {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .content {
+    border-width: 2px;
+  }
+  
+  .input {
+    border-width: 2px;
+  }
+  
+  .button {
+    border: 2px solid transparent;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .button:hover:not(:disabled) {
+    transform: none;
+  }
+}
